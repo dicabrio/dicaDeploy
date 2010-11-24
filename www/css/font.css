@@ -1,0 +1,28 @@
+/* 
+    Document   : font
+    Created on : 11-sep-2010, 12:29:42
+    Author     : robertcabri
+    Description:
+        dicabrio.com fonts
+*/
+@font-face {
+	font-family: 'HelveticaNeueCondensed';
+	src: url('../files/helveticaneueltcom-cn-webfont.eot');
+	src: local('☺'),
+		url('../files/helveticaneueltcom-cn-webfont.woff') format('woff'),
+		url('../files/helveticaneueltcom-cn-webfont.ttf') format('truetype'),
+		url('../files/helveticaneueltcom-cn-webfont.svg#webfontb3C8O31w') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCondensedBold';
+	src: url('../files/helveticaneueltcom-bdcn-webfont.eot');
+	src: local('☺'),
+		url('../files/helveticaneueltcom-bdcn-webfont.woff') format('woff'),
+		url('../files/helveticaneueltcom-bdcn-webfont.ttf') format('truetype'),
+		url('helveticaneueltcom-bdcn-webfont.svg#webfontAQXFDvqf') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

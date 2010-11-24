@@ -1,0 +1,581 @@
+/* 
+    Document   : screen
+    Created on : 23-apr-2010, 14:20:27
+    Author     : robertcabri
+    Description:
+        Purpose of the stylesheet follows.
+
+ *
+ * 	CSS - dicabrio.com
+ *
+ *	colors
+ *	-------------------
+ *	deep-red: 	#CD0018
+ *	dark-gray:	#333333
+ *	light-gray:	#cbcbcb
+ *
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Arial;
+	color: #333;
+}
+
+h1 {
+	font-family: 'HelveticaNeueCondensed';
+	font-size: 1.8em;
+}
+
+h2 {
+	font-family: 'HelveticaNeueCondensed';
+	font-size: 1.5em;
+}
+
+a {
+	color: #CD0018;
+}
+
+a:hover {
+	color: #CD0018;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #333;
+}
+
+a img {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol {
+	margin-bottom: 15px;
+	padding: 0 0 0 30px;
+	color: #333;
+}
+
+pre {
+	margin: 0 1px 10px 0;
+	padding: 10px;
+	background: rgb(240, 240, 240);
+	border-top: 1px dotted #CD0018;
+	border-bottom: 1px dotted #CD0018;
+	font-size: 0.8em;
+	font-family: courier;
+	color: #333;
+	overflow: auto;
+	clear: left;
+}
+
+code {
+	font-size: 1em;
+	font-family: courier;
+	color: #666;
+}
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+
+.helper-left {
+	float: left;
+	margin: 0 10px 10px 10px;
+	border-top: 1px solid #333;
+}
+
+.helper-left img {
+	border: 0;
+}
+
+.helper-left em {
+	display: block;
+	padding: 5px;
+	background: rgb( 240, 240, 240 );
+	font-size: 0.7em;
+}
+
+.helper-right {
+	float: right;
+	margin: 0 10px 10px 10px;
+	border-top: 1px solid #333;
+}
+
+.helper-right img {
+	border: 0;
+}
+
+.helper-right em {
+	display: block;
+	padding: 5px;
+	background: rgb( 240, 240, 240 );
+	font-size: 0.7em;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 923px;
+}
+
+#wrapper > header {
+	display: block;
+	position: relative;
+	height: 150px;
+	background-color: #333;
+	background-image: url('../images/bg-header-gradient.png');
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(left, right, from(rgb(113,113,113)), to(rgb(51,51,51)));
+	background-image: -webkit-gradient(linear,
+		left bottom,
+		left top,
+		color-stop(1.00, rgb(113,113,113)),
+		color-stop(0.00, rgb(51,51,51))
+		);
+	margin: 0 0 1px 0;
+}
+
+#wrapper > header a.home {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 230px;
+	height: 150px;
+	border-right: 1px solid #fff;
+}
+
+#wrapper > header nav ul {
+	position: absolute;
+	margin: 0 0 15px 0;
+	bottom: 0;
+	right: 20px;
+}
+
+#wrapper > header nav ul li {
+	display: inline;
+	border-right: 1px solid #fff;
+	padding: 0 15px;
+}
+
+#wrapper > header nav ul li:last-child {
+	border: none;
+	padding-right: 0;
+}
+
+#wrapper > header nav ul li a, header nav ul li a:visited {
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+#wrapper > header nav ul li a.active {
+	color: #CD0018
+}
+
+#wrapper > header nav ul li a:hover {
+	text-decoration: underline;
+}
+
+#showcase {
+	position: relative;
+	height: 205px;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+	margin: 0 0 1px 0;
+}
+
+#showcase dl {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	height: 125px;
+	width: 300px;
+	background: rgba(205, 0, 24, 0.7);
+	padding: 20px;
+	font-size: 18px;
+	border: 1px solid rgba(255,255,255, 0.3);
+}
+
+#showcase dl dt {
+	font-family: 'HelveticaNeueCondensed';
+	letter-spacing: 1px;
+	color: #fff;
+	font-size: 2em;
+}
+
+#showcase dd {
+	color: #fff;
+}
+
+#showcase p, #showcase a, #showcase strong {
+	color: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+#banner {
+	height: 70px;
+	overflow: hidden;
+	border-top: 1px solid #333;
+	margin: 0 0 1px 0;
+	border-bottom: 1px solid #333;
+}
+
+#home-main {
+	background-image: -moz-linear-gradient(top, #ccc 0, #fff 7%, #fff 100%);
+	background-image: -webkit-gradient(linear,
+		left bottom,
+		left top,
+		color-stop(100%, #ccc),
+		color-stop(93%, rgb(255,255,255)),
+		color-stop(0, #fff)
+		);
+	border-bottom: 1px solid #fff;
+	padding: 0 0 30px 0;
+}
+
+#home-main section, #main section, #quotes section {
+	float: left;
+	width: 461px;
+	border-right: 1px solid #fff;
+}
+
+#home-main section:nth-child(even), #main section:nth-child(even), #quotes section:nth-child(even) {
+	border: none;
+}
+
+#home-main h1 {
+	margin: 40px 0 0 0;
+	padding: 0 0 5px 10px;
+	border-bottom: 1px solid #CD0018;
+}
+
+#home-main p {
+	font-size: 0.9em;
+	line-height: 1.5em;
+	padding: 10px;
+}
+
+#main {
+	/*padding: 0 0 30px 0;
+	border-top: 1px solid #333;*/
+	border-bottom: 1px solid #fff;
+	padding: 0 0 30px 0;
+}
+
+#main section > header {
+	position: relative;
+	display: block;
+	padding: 40px 0 0 0;
+
+	background-image: -moz-linear-gradient(top, #ccc 0, #fff 7%, #fff 100%);
+	background-image: -webkit-gradient(linear,
+		left bottom,
+		left top,
+		color-stop(100%, #ccc),
+		color-stop(60%, rgb(255,255,255)),
+		color-stop(0, #fff)
+		);
+}
+
+#main section header .icon {
+	margin: 0 10px 0 0;
+	display: none;
+}
+
+#main section header h1 {
+	padding: 0 0 5px 10px;
+	border-bottom: 1px solid #CD0018;
+}
+
+#main section p {
+	line-height: 1.5em;
+	padding: 10px;
+	margin: 0 0 20px 0;
+	line-height: 1.5em;
+}
+
+#main .formtable {
+	margin: 0 10px 20px 10px;
+}
+
+address {
+	padding: 10px;
+	margin: 0 0 20px 0;
+	line-height: 1.5em;
+	font-size: 1em;
+	font-style: normal;
+}
+
+#quotes {
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+	margin: 0 0 1px 0;
+	padding: 0 0 50px 0;
+}
+
+#quotes section {
+	position: relative;
+}
+
+#quotes p {
+	position: absolute;
+	bottom: 0;
+	left: 60px;
+	font-size: 11px;
+	padding: 0 10px 0 0;
+}
+
+#quotes .quote {
+	position: relative;
+	height: 50px;
+}
+
+.icon {
+	float: left;
+	width: 50px;
+	height: 50px;
+	background: #CD0018;
+}
+
+.source {
+	color: #999;
+}
+
+.sub-block {
+	float: left;
+	width: 230px;
+	border-right: 1px solid #fff;
+}
+
+/*.duo-block {
+	float: left;
+	width: 461px;
+	border-right: 1px solid #fff;
+}
+
+.trio-block {
+	float: left;
+	width: 692px;
+	border-right: 1px solid #fff;
+}*/
+
+/*#main h1 {
+	height: 30px;
+	font-size: 24px;
+}
+
+
+
+#main h2 {
+	font-size: 24px;
+	height: 30px;
+}*/
+
+/*.portfolio h1 {
+	background: #fff url('../images/kop-portfolio.png') no-repeat 0 0;
+	text-indent: -999px;
+	margin: 20px 0 20px 10px;
+	height: 30px;
+}*/
+
+.portfolio ul {
+	list-style: none;
+	margin: 20px 0 20px 10px;
+	padding: 0;
+	height: 30px;
+}
+
+.portfolio li {
+	display: inline;
+	border-right: 1px solid #bbb;
+	padding: 0 5px 0 5px;
+	line-height: 40px;
+}
+
+.portfolio li:first-child {
+	padding: 0 5px 0 0;
+}
+
+.portfolio li:last-child {
+	border: none;
+}
+
+.portfolio li a {
+	color: #bbb;
+	text-decoration: none;
+}
+
+.portfolio li a:hover {
+	text-decoration: underline;
+}
+
+.portfolio li a.active {
+	color: #333;
+	text-decoration: underline;
+}
+
+.portfolioitem {
+	border-top: 1px solid #333;
+	margin: 0 0 30px 0;
+}
+
+.portfolioitem img {
+	border-bottom: 1px solid #CD0018;
+}
+
+.portfolioitem h2 {
+	font-weight: normal;
+	font-size: 20px;
+	margin: 10px 0 0 10px;
+}
+
+.portfolioitem p {
+	font-size: 12px;
+	line-height: 20px;
+	margin: 0 0 0 10px;
+}
+
+.portfolioitem .categories {
+	color: #bbb;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.otherarticles ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #f5ccd1;
+}
+
+.otherarticles li {
+	padding: 5px 0 5px 60px;
+	background: #fff url('../images/dot-articles.png') no-repeat 40px 50%;
+	border-bottom: 1px solid #f5ccd1;
+}
+
+.otherarticles li a {
+	font-size: 14px;
+}
+
+#main section article header {
+	padding: 0 10px;
+}
+
+#main section article header img {
+	margin: 20px 0 0 0;
+	border: 1px solid #ccc;
+	width: 439px;
+}
+
+#main section article header h1 {
+	font-size: 1.5em;
+	border: none;
+	padding: 30px 0 0 0;
+	margin: 0;
+}
+
+#main section article header p {
+	font-size: 0.8em;
+	color: #ccc;
+	margin: 0;
+	padding: 0;
+}
+
+#main section article > p {
+	margin: 10px 10px;
+	padding: 0;
+}
+
+#main section article footer {
+	border: none;
+	border-bottom: 1px solid #ccc;
+	padding: 0 10px 50px 10px;
+	margin: 0;
+}
+
+#main section article:last-child footer {
+	border: none;
+}
+
+.weblogentry h4 {
+	margin: 0 0 5px 10px;
+}
+
+.otherarticles.weblogentry h3 {
+	margin: 20px 0 20px 10px;
+}
+
+.otherarticles.weblogentry ul li {
+	padding: 5px 0 5px 30px;
+	background: #fff url('../images/dot-articles.png') no-repeat 10px 50%;
+}
+
+.otherarticles.weblogentry li a {
+	font-size: 10px;
+}
+
+.author {
+	color: #bbb;
+	font-size: 10px;
+}
+
+footer {
+	clear: both;
+	display: block;
+	padding: 10px 10px 50px 10px;
+	border-top: 10px solid #333;
+	background: #fff;
+	font-size: 10px;
+	color: #333;
+}
+
+.clear {
+	clear: both;
+}
+
+input[type=text] {
+	border: 1px solid #bbb;
+	background: #eee;
+	padding: 5px;
+	width: 200px;
+}
+
+input[type=submit] {
+	border: 1px solid #bbb;
+	background: #333;
+	padding: 5px 20px;
+	font-size: 14px;
+	color: #fff;
+}
+
+textarea {
+	border: 1px solid #bbb;
+	background: #eee;
+	padding: 5px;
+}
+
+.formtable {
+	border-collapse: collapse;
+}
+
+.formtable td {
+	padding: 0 0 10px 0;
+}
+
+.formtable th {
+	vertical-align: top;
+	text-align: left;
+	padding: 5px 10px 0 0;
+}
+
+.formtable textarea {
+	width: 300px;
+}
