@@ -106,7 +106,7 @@ class RequestControllerProtocol implements ServiceProtocol {
 	public function error($message) {
 
 		if ($message instanceof Exception) {
-			return $message->getTraceAsString();
+			return $message->getMessage().'<pre>'.$message->getTraceAsString().'</pre>';
 		} else if (is_string($message)) {
 			return $message;
 		}

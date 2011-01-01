@@ -62,27 +62,31 @@ class Form {
 	}
 
 	/**
+	 * This method will get a value from a request. It checks if the request object exists
+	 * IF not it returns null
+	 *
 	 * @param string $sRequestKey
 	 * @return mixed
 	 */
 	private function getValueFromRequest(FormElement $formElement) {
 
-		$formElementName = $formElement->getName();
+		if ($this->isSubmitted()) {
+			$formElementName = $formElement->getName();
 
-		if ($formElement->getType() == 'file') {
-			return $this->request->files($formElementName);
-		} else {
-			return $this->request->request($formElementName);
+			if ($formElement->getType() == 'file') {
+				return $this->request->files($formElementName);
+			} else {
+				return $this->request->request($formElementName);
+			}
 		}
 	}
 
 	/**
 	 * this method is only allowed to be called in the defineFormElements method
 	 *
-	 * @param string $sIdentifier
 	 * @param FormElement $oFormElement
 	 */
-	public function addFormElement($sIdentifier, FormElement $oFormElement) {
+	public function addFormElement(FormElement $oFormElement) {
 
 		$sFormElementName = $oFormElement->getName();
 
@@ -90,7 +94,11 @@ class Form {
 			$this->sFormEnctype = ' enctype="multipart/form-data"';
 		}
 
-		$this->aFormElementsByIdentifier[$sIdentifier] = $oFormElement;
+		if ($this->isSubmitted() && $oFormElement->getType() !== 'submit') {
+			$oFormElement->setValue($this->getValueFromRequest($oFormElement));
+		}
+
+		$this->aFormElementsByIdentifier[$sFormElementName] = $oFormElement;
 		$this->aFormElementsByName[$sFormElementName][] = $oFormElement;
 	}
 
@@ -185,7 +193,7 @@ class Form {
 
 		$this->request = $request;
 
-		if ($request->method() == Request::POST) {
+		if ($this->isSubmitted()) {
 			$this->populateFormElementsWithRequestData();
 		}
 
@@ -195,7 +203,6 @@ class Form {
 			$oHandler = $aSingleSubmitButtonAndHandler['FormHandler'];
 			$sValueFromRequest = $this->getValueFromRequest($oButton);
 			if ($sValueFromRequest == $oButton->getValue()) {
-				$this->populateFormElementsWithRequestData();
 				$oHandler->handleForm($this);
 			}
 		}
@@ -235,6 +242,19 @@ class Form {
 	public function getIdentifier() {
 
 		return $this->sFormIdentifier;
+	}
+
+	/**
+	 * check if this form is submitted
+	 * @return Boolean
+	 */
+	private function isSubmitted() {
+
+		if ($this->request instanceof Request) {
+			return ($this->request->method() == Request::POST);
+		}
+
+		return false;
 	}
 
 }

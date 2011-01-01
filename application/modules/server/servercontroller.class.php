@@ -68,14 +68,14 @@ class ServerController extends CmsController {
 
 		if ($this->form == null) {
 			$this->form = new Form(Conf::get('general.url.www').'/'.self::CONTROLLER.'/save/'.$server->getID(), Request::POST, 'editRepository');
-			$this->form->addFormElement($name->getName(), $name);
-			$this->form->addFormElement($hostname->getName(), $hostname);
-			$this->form->addFormElement($username->getName(), $username);
-			$this->form->addFormElement($password->getName(), $password);
-			$this->form->addFormElement($repopath->getName(), $repopath);
-			$this->form->addFormElement($repo_id->getName(), $repo_id);
-			$this->form->addFormElement($repobranch->getName(), $repobranch);
-			$this->form->addFormElement('save', $button);
+			$this->form->addFormElement($name);
+			$this->form->addFormElement($hostname);
+			$this->form->addFormElement($username);
+			$this->form->addFormElement($password);
+			$this->form->addFormElement($repopath);
+			$this->form->addFormElement($repo_id);
+			$this->form->addFormElement($repobranch);
+			$this->form->addFormElement($button);
 		}
 
 		return $this->form;

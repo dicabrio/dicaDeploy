@@ -28,13 +28,17 @@ class ServiceFacade {
 		}
 
 		try {
+			
 			$prot = $this->protocol;
 			$prot->decode($reqData);
 			$prot->validate();
 			$prot->execute();
 			return $prot->encode();
+			
 		} catch(ProtocolException $e) {
+
 			return $prot->error($e);
+			
 		}
 	}
 }

@@ -1,0 +1,56 @@
+.snaps {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.snaps th {
+	padding: 5px;
+	text-align: left;
+	background-image: -webkit-gradient(linear,
+		left bottom,
+		left top,
+		color-stop(1.00, #efefef),
+		color-stop(0.00, #b9b9b9)
+		);
+	border-right: 1px solid #efefef;
+}
+.snaps tr:nth-child(odd) { background: #EDF3FE; }
+.snaps td { padding: 5px; }
+.snaps tr td:nth-child(1) { width: 200px;}
+.snaps tr td:nth-child(2) { width: 150px;}
+
+.snaps input[name=renameto] {
+	width: 250px;
+	margin: 0 10px 0 0;
+}
+
+#action {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+
+	-moz-box-shadow: 0 0 10px #000;
+	-webkit-box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px #000;
+
+	border-radius: 5px 0 0 5px;
+}
+
+#action a {
+	float: left;
+	padding: 5px;
+	background: #fff;
+	text-decoration: none;
+}
+
+#action .prev {
+	border-radius: 5px 0 0 5px;
+}
+
+#action .next {
+	border-radius: 0 5px 5px 0;
+}
+
+#snapshots {
+	padding: 0 20px 50px 20px;
+}
