@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 
+ */
 class RepositoryController extends CmsController {
 
 	const CONTROLLER = 'repository';
@@ -30,7 +32,7 @@ class RepositoryController extends CmsController {
 
 		$repos = Repo::findAll();
 
-		$view = new View(Conf::get('general.dir.templates') . '/repository/repositoryoverview.php');
+		$view = new View(Conf::get('general.dir.templates') . '/repository/repositoryindex.php');
 		$view->assign('repos', $repos);
 
 		$baseView = parent::getBaseView();
@@ -39,6 +41,10 @@ class RepositoryController extends CmsController {
 		return $baseView;
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function _default() {
 		return 'Not implemented yet!';
 	}
@@ -48,6 +54,11 @@ class RepositoryController extends CmsController {
 	 */
 	private function buildRepositoryEditForm(Repo $repo) {
 
+		$type = new Select('type');
+		$type->addOption('0', 'Choose...');
+		$type->addOption('github', 'Github');
+		$type->setValue($repo->getType());
+
 		$name = new Input('text', 'name', $repo->getName());
 		$location = new Input('text', 'location', $repo->getLocation());
 		$username = new Input('text', 'username', $repo->getUsername());
@@ -56,6 +67,7 @@ class RepositoryController extends CmsController {
 
 		if ($this->form == null) {
 			$this->form = new Form(Conf::get('general.url.www').'/'.self::CONTROLLER . '/save/' . $repo->getID(), Request::POST, 'editServer');
+			$this->form->addFormElement($type);
 			$this->form->addFormElement($name);
 			$this->form->addFormElement($location);
 			$this->form->addFormElement($username);
@@ -66,11 +78,15 @@ class RepositoryController extends CmsController {
 		return $this->form;
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function edit() {
 
 		$repo = new Repo(Util::getUrlSegment(2));
 
-		$view = new View(Conf::get('general.dir.templates') . '/repository/editrepository.php');
+		$view = new View(Conf::get('general.dir.templates') . '/repository/repositoryedit.php');
 		$view->assign('errors', $this->session->get('errors'));
 		$view->assign('form', $this->buildRepositoryEditForm($repo));
 
@@ -82,6 +98,10 @@ class RepositoryController extends CmsController {
 		return $baseView;
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function save() {
 
 		$repo = new Repo(Util::getUrlSegment(2));
@@ -91,6 +111,7 @@ class RepositoryController extends CmsController {
 		$form->listen(Request::getInstance());
 
 		$mapper = new FormMapper();
+		$mapper->addFormElementToDomainEntityMapping('type', 'RepoType');
 		$mapper->addFormElementToDomainEntityMapping('name', 'RequiredTextLine');
 		$mapper->addFormElementToDomainEntityMapping('location', 'RequiredTextLine');
 		$mapper->addFormElementToDomainEntityMapping('username', 'RequiredTextLine');
@@ -102,6 +123,7 @@ class RepositoryController extends CmsController {
 
 			$mapper->constructModelsFromForm($form);
 			
+			$repo->setType($mapper->getModel('type'));
 			$repo->setName($mapper->getModel('name'));
 			$repo->setLocation($mapper->getModel('location'));
 			$repo->setUsername($mapper->getModel('username'));
@@ -115,13 +137,16 @@ class RepositoryController extends CmsController {
 		} catch (FormMapperException $e) {
 
 			$data->rollBack();
-
 			$this->session->set('errors', $mapper->getMappingErrors());
-			return $this->edit();
-			
+
 		}
+		return $this->edit();
+		
 	}
 
+	/**
+	 * 
+	 */
 	public function delete() {
 
 		$data = DataFactory::getInstance();
@@ -145,6 +170,9 @@ class RepositoryController extends CmsController {
 
 	}
 
+	/**
+	 * 
+	 */
 	public function validate() {
 
 		$data = DataFactory::getInstance();
@@ -154,6 +182,10 @@ class RepositoryController extends CmsController {
 			$data->beginTransaction();
 
 			$repo = new Repo(Util::getUrlSegment(2));
+
+//			$repoConnector = new RepoConncetor($repo);
+//			$repoConnector->validate();
+
 			$repo->validate();
 			$repo->save();
 

@@ -12,6 +12,13 @@
 	<?php endif; ?>
 
 	<div class="pagemodule">
+		<div class="modulelabel">Type:</div>
+		<div class="modulecontent">
+			<?php echo $form->getFormElement('type'); ?>
+		</div>
+		<div class="clear">&nbsp;</div>
+	</div>
+	<div class="pagemodule">
 		<div class="modulelabel">Name:</div>
 		<div class="modulecontent">
 			<?php echo $form->getFormElement('name'); ?>

@@ -2,7 +2,6 @@
 
 class Repo extends DataRecord implements DomainEntity {
 
-
 	/**
 	 * constructor
 	 *
@@ -26,51 +25,86 @@ class Repo extends DataRecord implements DomainEntity {
 		parent::addColumn('username', DataTypes::VARCHAR, 255, true);
 		parent::addColumn('password', DataTypes::VARCHAR, 255, true);
 		parent::addColumn('validated', DataTypes::INT, false, true);
-
+		parent::addColumn('type', DataTypes::VARCHAR, 255, true);
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getName() {
 
 		return $this->getAttr('name');
-		
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getLocation() {
 
 		return $this->getAttr('location');
-		
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getLastupdate() {
 
 		return $this->getAttr('lastupdate');
-		
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getRevision() {
 
 		return $this->getAttr('revision');
-		
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getUsername() {
 
 		return $this->getAttr('username');
-
 	}
 
+	/**
+	 *
+	 * @return string
+	 */
 	public function getPassword() {
 
 		return $this->getAttr('password');
+	}
+
+	/**
+	 *
+	 * @return string
+	 */
+	public function getType() {
+
+		return $this->getAttr('type');
 		
 	}
 
+	/**
+	 *
+	 * @param string $name
+	 */
 	public function setName($name) {
 
 		$this->setAttr('name', $name);
-
 	}
 
+	/**
+	 *
+	 * @param string $location
+	 */
 	public function setLocation($location) {
 
 		$oldValue = $this->getAttr('location');
@@ -79,9 +113,12 @@ class Repo extends DataRecord implements DomainEntity {
 		}
 
 		$this->setAttr('location', $location);
-
 	}
 
+	/**
+	 *
+	 * @param string $username
+	 */
 	public function setUsername($username) {
 
 		$oldValue = $this->getAttr('username');
@@ -90,9 +127,12 @@ class Repo extends DataRecord implements DomainEntity {
 		}
 
 		$this->setAttr('username', $username);
-
 	}
 
+	/**
+	 *
+	 * @param string $password
+	 */
 	public function setPassword($password) {
 
 		$oldValue = $this->getAttr('password');
@@ -101,6 +141,16 @@ class Repo extends DataRecord implements DomainEntity {
 		}
 
 		$this->setAttr('password', $password);
+	}
+
+	public function setType(RepoType $type) {
+
+		$oldValue = $this->getAttr('type');
+		if ($oldValue != $type->getValue()) {
+			$this->unvalidate();
+		}
+
+		$this->setAttr('type', $type);
 
 	}
 
@@ -110,7 +160,6 @@ class Repo extends DataRecord implements DomainEntity {
 	public function isValidated() {
 
 		return ($this->getAttr('validated') == 1);
-
 	}
 
 	/**
@@ -120,8 +169,28 @@ class Repo extends DataRecord implements DomainEntity {
 	 */
 	public function validate() {
 
+//	 curl_init('http://github.com/api/v2/json/repos/show/dicabrio/dicadeploy');
 
-		
+//		$res = '{"error":"dicabrio/dicadeployd Repository not found"}';
+//		$res = '{
+//			"repository": {
+//				"url":"https:\/\/github.com\/dicabrio\/dicaDeploy",
+//				"watchers":1,
+//				"homepage":"http:\/\/www.dicabrio.com",
+//				"has_wiki":true,
+//				"created_at":"2010/11/24 02:42:12 -0800",
+//				"fork":false,
+//				"open_issues":4,
+//				"private":false,
+//				"name":"dicaDeploy",
+//				"owner":"dicabrio",
+//				"has_issues":true,
+//				"pushed_at":"2011/01/01 09:10:10 -0800",
+//				"forks":1,
+//				"description":"deployment tool",
+//				"has_downloads":true
+//			}
+//		}';
 	}
 
 	/**
@@ -130,9 +199,8 @@ class Repo extends DataRecord implements DomainEntity {
 	 * values are modified
 	 */
 	private function unvalidate() {
-		
-		$this->setAttr('validated', 0);
 
+		$this->setAttr('validated', 0);
 	}
 
 	/**
@@ -141,6 +209,6 @@ class Repo extends DataRecord implements DomainEntity {
 	public static function findAll() {
 
 		return parent::findAll(__CLASS__, parent::ALL);
-		
 	}
+
 }

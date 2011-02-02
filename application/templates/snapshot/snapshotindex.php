@@ -6,7 +6,7 @@ $this->addScript(Conf::get('general.url.js').'/snapshot.js');
 
 ?>
 	<ul id="actions">
-		<li><a href="<?php Conf::get('general.url.www'); ?>'/database/edit/">Database toevoegen</a></li>
+		<li><a href="<?php echo Conf::get('general.url.www'); ?>/database/edit/">Database toevoegen</a></li>
 	</ul>
 	<div id="tabholder">
 		<ul id="tabmenu">
